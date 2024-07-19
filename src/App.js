@@ -1,23 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React, { useRef } from "react";
+import Banner from "./Components/Banner";
+import Navbar from "./Components/Navbar";
+import AboutMePage from "./Components/Aboutme";
+import SkillSection from "./Components/SkillSection";
+import ProjectSection from "./Components/ProjectSection";
+import ExperienceSection from "./Components/Employment";
 function App() {
+  const bannerRef = useRef(null);
+  const helloRef = useRef(null);
+  const skillRef = useRef(null);
+  const projectRef = useRef(null);
+  const experienceRef = useRef(null);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar bannerRef={bannerRef} helloRef={helloRef} skillRef={skillRef} projectRef={projectRef} experienceRef={experienceRef}></Navbar>
+      <div ref={bannerRef}>
+        <Banner></Banner>
+      </div>
+      <div ref={helloRef} className="h-screen bg-[#DAD3BE]  flex justify-center item-center">
+        <AboutMePage></AboutMePage>
+      </div>
+      <div ref={skillRef}>
+        <SkillSection></SkillSection>
+      </div>
+      <div ref={projectRef}>
+        <ProjectSection></ProjectSection>
+      </div>
+      <div ref={experienceRef}>
+        <ExperienceSection></ExperienceSection>
+      </div>
     </div>
   );
 }
